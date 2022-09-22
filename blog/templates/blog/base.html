@@ -14,5 +14,19 @@
 </head>
 
 <body>
-  Hello World
+  {% block articles %}
+  {% for article in articles %}
+  <div class="block">
+    <h2>{{article.title}}</h2>
+    <div class="tags">
+      <p>Kategorie:</p>
+      {% for tag in article.tag.all %}
+      <p>&nbsp;{{ tag.name }}</p>
+      {% endfor %}
+    </div>
+    <img src="{{article.image.url}}" alt="Author: {{ article.author }}" width="128px" height="128px">
+    <p>{{article.text|truncatechars:300 }}...<a href="{% url 'index' %}">číst dále</a></p>
+  </div>
+  {% endfor %}
+  {% endblock articles %}
 </body>
