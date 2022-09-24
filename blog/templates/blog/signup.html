@@ -1,0 +1,17 @@
+{% extends "./base.html" %}
+{% block title %} | Registrace{% endblock title %}
+{% block blog_header.super %}{% endblock blog_header.super %}
+{% block articles %}
+<div class="block">
+  <form method="POST">
+    {% csrf_token %}
+    {{signup_form}}
+    <br/>
+    <br/>
+    <button type="submit">Jdu spravit mediální svět</button>
+    <br/><br/>
+  </form>
+  <a href="{% url 'signup' %}">Už jste to s námi rozepsali? Přihlaste se ZDE.</a>
+</div>
+{% endblock articles %}
+

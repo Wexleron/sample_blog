@@ -1,0 +1,19 @@
+{% extends "./base.html" %}
+{% block title %} | {{title}}{% endblock title %}
+{% block blog_header.super %}{% endblock blog_header.super %}
+{% block articles %}
+<div class="block">
+  <h2>{{article.title}}</h2>
+  <h4>Autor: {{article.author}}</h4>
+  <p>Článek je {{article.check_time|safe}}</p>
+  <p>Poslední aktualizace: {{article.created}}</p>
+  <div class="tags">
+    <p>Kategorie:</p>
+    {% for tag in article.tag.all %}
+    <p>&nbsp;{{ tag.name }}</p>
+    {% endfor %}
+  </div>
+  <img src="{{article.image.url}}" alt="Author: {{ article.author }}" width="128px" height="128px">
+  <p>{{article.text}}</p>
+</div>
+{% endblock articles %}

@@ -4,7 +4,7 @@ from datetime import timedelta #Python Native library datetime library
 from django.utils import timezone   #Aware datetime (Aware=With respect to TimeZone "TZ")
 
 class ArticleTagModel(models.Model):
-    name = models.CharField(max_length=50,)
+    name = models.CharField(max_length=50, verbose_name = "Název kategorie")
     
     class Meta:
         ordering = ['-name']
@@ -15,17 +15,17 @@ class ArticleTagModel(models.Model):
 
 class ArticleModel(models.Model):
 
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    # filepath for media files in function.
     def author_directory_path(instance, filename):
-        return f'author_{instance.user.id}/{filename}'
+        return f'Authors/{instance.author.id}/{filename}'
 
-    title = models.CharField(max_length=200,)
-    text = models.TextField(max_length=18000,)  #length == 10 A4 of standard chars count (A4 = 1800 chars as per standard)
-    tag = models.ManyToManyField(ArticleTagModel, related_name="articles",)
-    image = models.ImageField(upload_to = author_directory_path, default='global/img/build.png',)
+    title = models.CharField(max_length=200,  verbose_name = "Titulek")
+    text = models.TextField(max_length=18000,  verbose_name = "Text článku")  #length == 10 A4 of standard chars count (A4 = 1800 chars as per standard)
+    tag = models.ManyToManyField(ArticleTagModel, related_name="articles", help_text="Vyber 1 či více kategorií, v které se má čánek zobrazovat", verbose_name = "Kategorie")
+    image = models.ImageField(upload_to = author_directory_path, default='global/img/build.png',  verbose_name = "Obrázek")
     created = models.DateTimeField(auto_now=True, editable=False,)
     author = models.ForeignKey(get_user_model(), editable=False, null=True, on_delete=models.PROTECT,)  #TO-DO - PROTECT exception should be proccessed in view !
-    active = models.BooleanField(default=False,)
+    active = models.BooleanField(default=False, help_text="Zaškrtnutím bude článek publikovaný. Publikaci lze v budoucnu zrušit", verbose_name = "Publikovat ?")
 
     class Meta:
         ordering = ['-created']
@@ -35,23 +35,13 @@ class ArticleModel(models.Model):
     def __str__(self):
         self.date = self.created.strftime('%d.%m.%Y')   #datetime format to pretty string
         if self.active:
-            return f'PUBLIKOVÁN | Článek: {self.title} | Vytvořen: {self.date}'
+            return f'PUBLIKOVÁN | Titulek: {self.title} | Vytvořen: {self.date}'
         else:
-            return f'NEPUBLIKOVÁN | Článek: {self.title} | Vytvořen: {self.date}'
+            return f'NEPUBLIKOVÁN | Titulek: {self.title} | Vytvořen: {self.date}'
 
-
-
-""" REWORK
     def check_time(self):
         self.now = timezone.now()   #Initialize Aware datetime
-        if self.created > self.now - timedelta(hours=3):
-            return "< 3 hodiny" 
-        elif self.created  > self.now - timedelta(hours=8):
-            return "3 - 8 hodinami"
-        elif self.created  > self.now - timedelta(hours=24):
-            return "8 - 24 hodinami"
-        elif self.created > self.now - timedelta(hours=72):
-            return " 24 - 72 hodinami"
+        if self.created > self.now - timedelta(hours=24):
+            return '<span style="color:green; font-weight:bold;">mladší než 24 hodin</span>' 
         else:
-            return "Informace o prodejci nemusí být pravdivá"
-            """
+            return '<span style="color:orange; font-weight:bold;">starší více jak 24 hodin</span>'

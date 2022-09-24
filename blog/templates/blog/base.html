@@ -14,10 +14,36 @@
 </head>
 
 <body>
+  <header>
+    {% block blog_header %}
+      <ul id="header-menu">
+        <li><a href="{% url 'index' %}">Home</a></li> | 
+        {% if not user.is_authenticated %}<li><a href="{% url 'login' %}">Přihlásit</a></li> | 
+        <li><a href="{% url 'signup' %}" title="Registrovat se" >Registrovat</a></li>
+        {% elif user.is_authenticated %}<li><a href="{% url 'admin:index' %}">Administrace: {{user.username}}</a></li> | 
+        <li><a href="{% url 'logout' %}">Odhlásit se</a></li>
+        {% endif %}
+      </ul>
+    {% endblock blog_header %}
+  </header>
+  {% block tags_searchable %}
+  <div>
+    <h4>Zobraz všechny relevantní články dané kategorie</h4>
+    <p style="display:inline-flex"></p>
+    {% for tag in tags %}
+    | <a href="{% url 'article_list' tag.pk %}">{{ tag.name }}</a>
+    {% endfor %}
+     |
+    </p>
+  </div>
+  {% endblock tags_searchable %}
   {% block articles %}
   {% for article in articles %}
   <div class="block">
     <h2>{{article.title}}</h2>
+    <h4>Autor: {{article.author}}</h4>
+    <p>Článek je {{article.check_time|safe}}</p>
+    <p>Poslední aktualizace: {{article.created}}</p>
     <div class="tags">
       <p>Kategorie:</p>
       {% for tag in article.tag.all %}
@@ -25,7 +51,7 @@
       {% endfor %}
     </div>
     <img src="{{article.image.url}}" alt="Author: {{ article.author }}" width="128px" height="128px">
-    <p>{{article.text|truncatechars:300 }}...<a href="{% url 'index' %}">číst dále</a></p>
+    <p>{{article.text|truncatechars:300 }}...<a href="{% url 'blog_detail' article.pk %}">číst dále</a></p>
   </div>
   {% endfor %}
   {% endblock articles %}
