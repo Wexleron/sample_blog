@@ -32,6 +32,7 @@ class ArticleModel(models.Model):
         verbose_name = "Článek"
         verbose_name_plural = "Články"
     
+    #String for article model based on if article is published or not
     def __str__(self):
         self.date = self.created.strftime('%d.%m.%Y')   #datetime format to pretty string
         if self.active:
@@ -39,6 +40,7 @@ class ArticleModel(models.Model):
         else:
             return f'NEPUBLIKOVÁN | Titulek: {self.title} | Vytvořen: {self.date}'
 
+    #function to chesk if article is older than 24 hours or not
     def check_time(self):
         self.now = timezone.now()   #Initialize Aware datetime
         if self.created > self.now - timedelta(hours=24):

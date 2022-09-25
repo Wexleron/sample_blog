@@ -18,20 +18,25 @@ def index(request):
 
 def blog_detail(request, blog_id):
 	#Get Article detail by url "blog_id"
-    article = ArticleModel.objects.get(pk=blog_id)
-    tags = ArticleTagModel.objects.all()
-    title = ArticleModel.objects.get(pk=blog_id)
-    title = title.title
-    contents = {
-        'article' : article,
-		'tags' : tags,
-		'title' : title,
-    }
-    return render(request, "blog/blog_detail.html", contents)
+	article = ArticleModel.objects.get(pk=blog_id)
+	#Check if article is "Published"
+	if article.active == True:
+		tags = ArticleTagModel.objects.all()
+		title = ArticleModel.objects.get(pk=blog_id)
+		title = title.title
+		contents = {
+			'article' : article,
+			'tags' : tags,
+			'title' : title,
+		}
+		return render(request, "blog/blog_detail.html", contents)
+	#Article is not PUBLISHED ! Redirect follows
+	else:
+		return redirect('index')
 
 def article_list(request, tag_id):
 	#Get articles by tag
-	articles = ArticleModel.objects.filter(tag=tag_id)
+	articles = ArticleModel.objects.filter(tag=tag_id).filter(active=True)
 	tags = ArticleTagModel.objects.all()
 	title = ArticleTagModel.objects.get(pk=tag_id)
 	contents = {
@@ -40,7 +45,6 @@ def article_list(request, tag_id):
 		'title' : title,
     }
 	return render(request, "blog/blog_list.html", contents)
-	#Topping.objects.filter(on_pizza__restaurant=R).annotate(the_count=Count('on_pizza')).order_by('-the_count')[0]
 
 def signup(request):
 	if request.method == 'POST':
@@ -51,7 +55,7 @@ def signup(request):
 			validated_signup_form.save()	#Save into DB with admin rights.
 			user_group = Group.objects.get(name="Redaktoři")
 			validated_signup_form.groups.add(user_group)
-			validated_signup_form.save()	#Save again in DB with groups, which can be created only after user has ID (been created).
+			validated_signup_form.save()	#Save again in DB with group, which can be created only after user has ID (been created).
 			return redirect('login')
 	elif request.user.is_authenticated:
 		return redirect('index')

@@ -1,0 +1,109 @@
+[
+    {
+        "model": "blog.ArticleModel",
+        "pk": 1,
+        "fields": {
+            "title": "Počítače jsou přežitek",
+            "text": "Dlouhý text o tom, jak jsou počítače přežitek, jejich místo zabírají konzole, notebooky, mobily apod. Dlouhý text o tom, jak jsou počítače přežitek, jejich místo zabírají konzole, notebooky, mobily apod. Dlouhý text o tom, jak jsou počítače přežitek, jejich místo zabírají konzole, notebooky, mobily apod. Dlouhý text o tom, jak jsou počítače přežitek, jejich místo zabírají konzole, notebooky, mobily apod. Dlouhý text o tom, jak jsou počítače přežitek, jejich místo zabírají konzole, notebooky, mobily apod. Dlouhý text o tom, jak jsou počítače přežitek, jejich místo zabírají konzole, notebooky, mobily apod. Dlouhý text o tom, jak jsou počítače přežitek, jejich místo zabírají konzole, notebooky, mobily apod. ",
+            "tag": [1],
+            "created": "2020-05-07 12:50:01.096892+00",
+            "author": 1,
+            "active": "True"
+        }
+    },
+    {
+        "model": "blog.ArticleModel",
+        "pk": 2,
+        "fields": {
+            "title": "Vařením ke zhroucení státu",
+            "text": "Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, Dlouh a srdceryvný článek o tom, ",
+            "tag": [2,4,5],
+            "created": "2022-09-25 08:54:01.096892+00",
+            "author": 2,
+            "active": "True"
+        }
+    },
+    {
+        "model": "blog.ArticleModel",
+        "pk": 3,
+        "fields": {
+            "title": "ČLANEK BYL ZRUŠENPes jako propustka v době covidu",
+            "text": "ČLANEK BYL ZRUŠEN = je-li vidět, něco nefunguj ! Půjčování psů zaznamenalo vysoký nárust, bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text bla bla bla, dlouhý text",
+            "tag": [3],
+            "created": "2022-09-25 08:54:01.096892+00",
+            "author": 3,
+            "active": "False"
+        }
+    },
+    {
+        "model": "blog.ArticleModel",
+        "pk": 4,
+        "fields": {
+            "title": "Uličník naprogramoval kód, který urazil místního politika... opakovaně!",
+            "text": "Stalo se: místnímu uličníkovy se zželalo místního politika v době nastupující zimy a nedostatku tepla, a tak se rozhodl, že mu řádně 'zatopí'. bla bla bla",
+            "tag": [1,4],
+            "created": "2022-09-22 12:00:01.096892+00",
+            "author": 4,
+            "active": "True"
+        }
+    },
+    {
+        "model": "blog.ArticleModel",
+        "pk": 5,
+        "fields": {
+            "title": "Shorts: Ekonomická krizel lidi zaskočila.",
+            "text": "Denodenní varování co způsobí masivní tisk peněz tzv. QE (Quantitative Easing) s ekonomikou lidé nebrali vážně. Když se krize dostavila, diví se, co všechno jejich vláda nedovede za 6 měsícu zničit.",
+            "tag": [4, 5],
+            "created": "2022-09-04 17:50:01.096892+00",
+            "author": 5,
+            "active": "True"
+        }
+    },
+    {
+        "model": "blog.ArticleModel",
+        "pk": 6,
+        "fields": {
+            "title": "Shorts: Kočka a pes v domě",
+            "text": "Pejsek a kočička vařili dort - Jak to bylo všichni dobře víme.",
+            "tag": [3],
+            "created": "2019-12-23 08:50:01.096892+00",
+            "author": 5,
+            "active": "True"
+        }
+    },
+    {
+        "model": "blog.ArticleTagModel",
+        "pk": 1,
+        "fields": {
+            "name": "Počítače"
+        }
+    },
+    {
+        "model": "blog.ArticleTagModel",
+        "pk": 2,
+        "fields": {
+            "name": "Vaření"
+        }
+    },
+    {
+        "model": "blog.ArticleTagModel",
+        "pk": 3,
+        "fields": {
+            "name": "Chovatelství"
+        }
+    },
+    {
+        "model": "blog.ArticleTagModel",
+        "pk": 4,
+        "fields": {
+            "name": "Denní zprávy"
+        }
+    },
+    {
+        "model": "blog.ArticleTagModel",
+        "pk": 5,
+        "fields": {
+            "name": "Ekonomické Zprávy"
+        }
+    }
+]
