@@ -2,12 +2,14 @@
 {% block title %} | Kategorie: {{title}}{% endblock title %}
 {% block blog_header.super %}{% endblock blog_header.super %}
 {% block articles %}
-{% for article in articles %}
 <div class="block">
-  <p class="left-align">
-    <a href="{% url 'blog_detail' article.pk %}">{{article.title}} | {{article.author}} | {{article.created}}</a>
-    <img src="{{article.image.url}}" alt="Author: {{ article.author }}" width="25px" height="25px">
-  </p>
+  <table class="table left-align">
+    {% for article in articles %}
+    <tr>
+      <td><img src="{{article.image_thumbnail.url}}" alt="Author: {{ article.author }}" width="50px" height="50px"></td>
+      <td><a href="{% url 'blog_detail' article.pk %}">{{article.author}} | {{article.title}} | {{article.created}}</a></td>
+    </tr>
+    {% endfor %}
+  </table>
 </div>
-{% endfor %}
 {% endblock articles %}

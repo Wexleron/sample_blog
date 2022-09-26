@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=200)),
                 ('text', models.TextField(max_length=18000)),
-                ('image', models.ImageField(default='global/img/build.png', upload_to=blog.models.ArticleModel.author_directory_path)),
+                ('image', models.ImageField(default='global/img/build.png', upload_to=blog.models.ArticleModel.image_directory_path)),
                 ('created', models.DateTimeField(auto_now=True)),
                 ('active', models.BooleanField(default=False)),
                 ('author', models.ForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL)),

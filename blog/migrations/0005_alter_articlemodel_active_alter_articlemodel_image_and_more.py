@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='articlemodel',
             name='image',
-            field=models.ImageField(default='global/img/build.png', upload_to=blog.models.ArticleModel.author_directory_path, verbose_name='Obrázek'),
+            field=models.ImageField(default='global/img/build.png', upload_to=blog.models.ArticleModel.image_directory_path, verbose_name='Obrázek'),
         ),
         migrations.AlterField(
             model_name='articlemodel',

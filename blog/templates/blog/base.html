@@ -28,8 +28,8 @@
   </header>
   {% block tags_searchable %}
   <div>
-    <h4>Zobraz všechny relevantní články dané kategorie</h4>
-    <p style="display:inline-flex"></p>
+    <h4>Zobraz relevantní články dané kategorie</h4>
+    <p style="display:inline-flex"></p><a href="{% url 'all_list' %}">VŠECHNY</a>
     {% for tag in tags %}
     | <a href="{% url 'article_list' tag.pk %}">{{ tag.name }}</a>
     {% endfor %}
@@ -44,14 +44,13 @@
     <h2>{{article.title}}</h2>
     <h4>Autor: {{article.author}}</h4>
     <p>Článek je {{article.check_time|safe}}</p>
-    <p>Poslední aktualizace: {{article.created}}</p>
-    <div class="tags">
-      <p>Kategorie:</p>
-      {% for tag in article.tag.all %}
-      <p>&nbsp;{{ tag.name }}</p>
-      {% endfor %}
-    </div>
-    <img src="{{article.image.url}}" alt="Author: {{ article.author }}" width="128px" height="128px">
+    <p>Poslední aktualizace: <b>{{article.created}}</b></p>
+    <p>Kategorie:
+    {% for tag in article.tag.all %}
+    &nbsp;| <b>{{ tag.name }}</b>
+    {% endfor %}
+     |</p>
+    <img src="{{article.image.url}}" alt="Author: {{ article.author }}" width="300px" height="300px">
     <p>{{article.text|truncatechars:300 }}...<a href="{% url 'blog_detail' article.pk %}">číst dále</a></p>
   </div>
   {% endfor %}
