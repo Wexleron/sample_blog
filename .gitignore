@@ -1,6 +1,7 @@
 #Custom
 venv/
-media/
+media/authors/
+migrations/
 local_settings.py
 
 # Byte-compiled / optimized / DLL files
