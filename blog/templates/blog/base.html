@@ -17,12 +17,14 @@
   <header>
     {% block blog_header %}
       <ul id="header-menu">
-        <li><a href="{% url 'index' %}">Home</a></li> | 
-        {% if not user.is_authenticated %}<li><a href="{% url 'login' %}">Přihlásit</a></li> | 
+        <li><a href="{% url 'index' %}">Home</a></li>
+        {% if not user.is_authenticated %}<li><a href="{% url 'login' %}">Přihlásit</a></li>
         <li><a href="{% url 'signup' %}" title="Registrovat se" >Registrovat</a></li>
-        {% elif user.is_authenticated %}<li><a href="{% url 'admin:index' %}">Administrace: {{user.username}}</a></li> | 
+        {% elif user.is_authenticated %}<li><a href="{% url 'admin:index' %}">Administrace: {{user.username}}</a></li>
         <li><a href="{% url 'logout' %}">Odhlásit se</a></li>
         {% endif %}
+        <li><a href="{% url 'articles_api_list' %}">API List</a></li>
+        <li><a href="{% url 'articles_api_detail' 1 %}">API Detail</a></li>
       </ul>
     {% endblock blog_header %}
   </header>
