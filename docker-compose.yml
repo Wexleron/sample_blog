@@ -3,7 +3,13 @@ version: "3.10"
 services:
   web:
     build: .
-    command: [python manage.py runserver 0.0.0.0:8000]
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py loaddata prod_group &&
+             python manage.py loaddata dummy_user &&
+             python manage.py loaddata dummy_basic &&
+             python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/sample_blog
     ports:
