@@ -33,7 +33,7 @@ class ArticleModel(models.Model):
     text = models.TextField(max_length=18000,  verbose_name = "Text článku")  #length == 10 A4 of standard chars count (A4 = 1800 chars as per standard)
     tag = models.ManyToManyField(ArticleTagModel, related_name="articles", help_text="Vyber 1 či více kategorií, v které se má čánek zobrazovat", verbose_name = "Kategorie")
     image = models.ImageField(upload_to = image_directory_path, default='global/img/build.png',  verbose_name = "Obrázek")
-    image_thumbnail=models.ImageField(upload_to = thumbnail_directory_path, default='global/img/build_thumbnail.png', verbose_name = "Mini-obrázek")
+    image_thumbnail=models.ImageField(upload_to = thumbnail_directory_path, default='global/img/build_thumbnail.png', verbose_name = "Mini-obrázek", editable=False)
     created = models.DateTimeField(auto_now=True, editable=False,)
     author = models.ForeignKey(get_user_model(), editable=False, null=True, on_delete=models.PROTECT,)  #TO-DO - PROTECT exception should be proccessed in view !
     active = models.BooleanField(default=False, help_text="Zaškrtnutím bude článek publikovaný. Publikaci lze v budoucnu zrušit", verbose_name = "Publikovat ?")
